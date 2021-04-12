@@ -7,12 +7,12 @@ De Nederlandse Vaccinatie Tracker is een [Twitter account @NLVaccinatie](https:/
 Het [Coronadashboard van de Rijskoverheid](https://coronadashboard.rijksoverheid.nl/) geeft geen cijfers over het percentage inwoners dat is ingeënt, maar alleen over het aantal prikken. Er wordt verschil gemaakt tussen het aantal "Berekende" en "Gezette" prikken. Voor meer informatie hierover, zie *[Uitleg bij de cijfers](https://coronadashboard.rijksoverheid.nl/verantwoording#vaccinatie).
 
 Om van het aantal berekende prikken te komen tot een percentage ingeënte inwoners ouder dan 18 wordt we de volgende formule gebruikt (overbodige haakjes voor de leesbaarheid):
-`((Prik<sub>1e</sub> / Prik<sub>tot</sub>) * Prik<sub>berekend</sub>) ÷ (Inw<sub>tot</sub> - Inw<sub>o18</sub>)`
+**((Prik<sub>1e</sub> / Prik<sub>tot</sub>) * Prik<sub>berekend</sub>) ÷ (Inw<sub>tot</sub> - Inw<sub>o18</sub>)**
 
 Waarbij de gegevens afkomstig zijn van:
-- `Prik<sub>1e</sub> &amp; Prik<sub>tot</sub>`: [RIVM](https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma)
-- `Prik<sub>berekend</sub>`: [Corona Dashboard Rijksoverheid; Berekende Prikken](https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties)
-- `Inw<sub>tot</sub> & Inw<sub>o18</sub>`: [CBS: Bevolkingsteller](https://www.cbs.nl/nl-nl/visualisaties/dashboard-bevolking/bevolkingsteller/)
+- **Prik<sub>1e</sub> &amp; Prik<sub>tot</sub>:** [RIVM](https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma)
+- **Prik<sub>berekend</sub>:** [Corona Dashboard Rijksoverheid; Berekende Prikken](https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties)
+- **Inw<sub>tot</sub> & Inw<sub>o18</sub>:** [CBS: Bevolkingsteller](https://www.cbs.nl/nl-nl/visualisaties/dashboard-bevolking/bevolkingsteller/)
 
 ## Klopt de berekening van @NLVaccinatie eigenlijk wel?
 Nee
