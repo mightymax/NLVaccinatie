@@ -127,6 +127,7 @@ function logger($msg, $isError = false, $autoFormatNumbers = true) {
 try {
     
     $tweet = false;
+    $forceTweet = false;
     array_shift($argv);
     foreach ($argv as $arg) {
         $arg = trim($arg, '-');
@@ -134,6 +135,9 @@ try {
             case 'tweet':
                 $tweet = true;
                 break;
+        case 'force':
+            $forceTweet = true;
+            break;
             default:
                 throw new Exception("Unkown cli argument: {$arg}");
         }
@@ -146,7 +150,7 @@ try {
     $lastTweetTime = strtotime($twurl->getLastTweet()->created_at);
     $lastPageupdateTime = $doc->getLastmodified();
     $msg = sprintf('Last tweet was from %s, last status from Dashboard is %s', date('c', $lastTweetTime), date('c', $lastPageupdateTime));
-    if ($lastPageupdateTime > $lastTweetTime) {
+    if ($lastPageupdateTime > $lastTweetTime || $forceTweet == true) {
         logger($msg, false, false);
     } else {
         logger($msg.": no need to tweet", false, false);
@@ -183,7 +187,7 @@ try {
     logger($tweet);
     if (TWEET) {
         $response = $twurl->tweet($tweet);
-        logger("Tweet was send: https://twitter.com/{$response->user->screen_name}/status/{$response->id}");
+        logger("Tweet was send: https://twitter.com/{$response->user->screen_name}/status/{$response->id}", false, false);
     }
     
 } catch (Exception $e) {
