@@ -61,14 +61,30 @@ class Twurl
 }
 
 class HTMLScraper extends DOMDocument {
-    protected $xpath;
+    protected $xpath, $url;
 
     public function __construct($url) {
         parent::__construct('1.0', 'utf-8');
         if (!@$this->loadHTMLFile($url)) {
             throw new Exception("Failed to load '{$url}' as DOMDocument");
         }
+        $this->url = $url;
         $this->xpath = new DOMXpath($this);
+    }
+    
+    public function getLastmodified()
+    {
+        $cmd = sprintf('curl -s -I %s|grep last-modified', escapeshellarg($this->url));
+        $lastModfiedResult = exec($cmd, $output, $err);
+        if ($err || !$lastModfiedResult) {
+            throw new Exception("Failed to fetch last modification using cmd `{$cmd}`.");
+        }
+        list(, $dateString) = explode(':', $lastModfiedResult, 2);
+        $time = strtotime(trim($dateString));
+        if (false === $time) {
+            throw new Exception('Failed to convert last modification string "'.$dateString.'" to time.');
+        }
+        return $time;
     }
     
     public function query($query, DOMNode $parent = null) {
@@ -97,8 +113,8 @@ class HTMLScraper extends DOMDocument {
     
 }
 
-function logger($msg, $isError = false) {
-    if (preg_match_all('/\d{3,}/', $msg, $matches) && count($matches[0])) {
+function logger($msg, $isError = false, $autoFormatNumbers = true) {
+    if (true === $autoFormatNumbers && preg_match_all('/\d{3,}/', $msg, $matches) && count($matches[0])) {
         foreach ($matches[0] as $bigNumber) {
             $msg = str_replace($bigNumber, number_format($bigNumber, 0, ',', '.'), $msg);
         }
@@ -127,34 +143,20 @@ try {
 
     $twurl = new Twurl();
     $doc = new HTMLScraper($urlCoronadashboard);
+    $lastTweetTime = strtotime($twurl->getLastTweet()->created_at);
+    $lastPageupdateTime = $doc->getLastmodified();
+    $msg = sprintf('Last tweet was from %s, last status from Dashboard is %s', date('c', $lastTweetTime), date('c', $lastPageupdateTime));
+    if ($lastPageupdateTime > $lastTweetTime) {
+        logger($msg, false, false);
+    } else {
+        logger($msg.": no need to tweet", false, false);
+        if (TWEET) exit(0);
+    }
+    
     $article = $doc->query('//h3[text()="Aantal gezette prikken"]/parent::article')->item(0);
     $calculatedDoses = $doc->str_to_int($doc->query('.//div[@color="data.primary"]', $article)->item(0)->parentNode); 
     logger("Calculated doses according to Dashboard: $calculatedDoses");
     
-    //Fetch the latest update (in Dutch text) from the footer of the Article
-    // Expected pattern example: "Waarde van zondag 11 april · ..."
-    $footer = $doc->query('./footer', $article)->item(0);
-    $months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
-    if (!preg_match('/^(Waarde van (?:maan|dins|woens|donder|vrij|zater|zon)dag (\d{1,2}) ('.implode('|', $months).'))\s·\s/', $footer->nodeValue, $match)) 
-        throw new Exception("Date pattern in footer (`{$footer->nodeValue}`) does not meet expectations.");
-    list(, $dateText, $day, $monthText) = $match;
-    $month = array_search($monthText, $months) + 1;
-    $date = new DateTime();
-    $date->setDate(date('Y'), $month, (int)$day);
-
-    $lastTweet = $twurl->getLastTweet();
-    if ($lastTweet) {
-        $lastTweetDate = new DateTime();
-        $lastTweetDate->setTimestamp(strtotime($lastTweet->created_at));
-        $msg = "Last tweet was from {$lastTweet->created_at}, last status from Dashboard is ".$date->format('Y-m-d');
-        if ($lastTweetDate->format('Ymd') >= $date->format('Ymd')) {
-            logger($msg.": no need to tweet");
-            if (TWEET) exit(0);
-        } else {
-            logger($msg);
-        }
-    }
-
     //Fetch RIVM Data so we can guess % of first vaccinated people:
     unset($doc);
     $doc = new HTMLScraper($urlRIVM);
