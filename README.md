@@ -32,3 +32,6 @@ Ja hoor! Doe het als volgt:
 - Authenticeer: `twurl authorize --consumer-key <jouw-consumer-key> --consumer-secret <jouw-consumer-secret>`
 - Run het script als volgt: `php NLVaccinatieTweet.php -tweet`
 - Als je `-tweet` weglaat voer je het script uit in *Dry Run* modus en wordt er geen Tweet verstuurd maar kun je wel testen of alles werkt.
+
+## Waarom staat er bij eerdere tweets "Waardes t/m ..."?
+Dit project is begonnen op 10 april. Vanaf die dag wordt er elke dag (rond 16:00) een nieuwe update op de tijdlijn geplaatst. Op 10 april zijn alle historische gegevens ook geplaatst, maar dan wel met de periode waar het betrekking op heeft.
