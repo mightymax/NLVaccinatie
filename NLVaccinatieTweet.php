@@ -20,9 +20,16 @@ class Twurl
     
     public function __construct()
     {
-        $twurl = trim(exec('which twurl', $output, $err));
-        if (false === $twurl || $err) {
-            throw new Exception('Unable to detect your `twurl` executable, see https://github.com/twitter/twurl');
+        if (isset($_SERVER['TWURL_BIN'])) {
+            $twurl = $_SERVER['TWURL_BIN'];
+        } else {
+            $twurl = trim(exec('which twurl', $output, $err));
+            if (false === $twurl || $err) {
+                throw new Exception('Unable to detect your `twurl` executable, see https://github.com/twitter/twurl');
+            }
+        }
+        if (!is_executable($twurl)) {
+            throw new Exception('twurl bin `'.$twurl.'` is not executable, see https://github.com/twitter/twurl');
         }
         $this->twurl = $twurl;
 

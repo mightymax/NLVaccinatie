@@ -19,7 +19,7 @@ Waarbij de gegevens afkomstig zijn van:
 Nee
 
 ## @NLVaccinatie is dus eigenlijk fakenews of zelfs een wappie?
-Nee dat nou ook weer niet. Probleem is dat de data die in Nederland verzamelt wordt niet geschikt is om exact te berekenen wat het percentage ingeënte Nederlandse inwoners is. @NLVaccinatie doet een vereenvoudigde statistische berekening zoals uit de formule blijkt. Op het Dashboard van de Rijksoverheid wordt gemeld dat de juiste cijfers ooit wel beschikbaar komen, als het zover is zal @NLVaccinatie daar uiteraard gebruik van maken.
+Nee dat nou ook weer niet. Probleem is dat de data die in Nederland verzameld wordt niet geschikt is om exact te berekenen wat het percentage ingeënte Nederlandse inwoners is. @NLVaccinatie doet een vereenvoudigde statistische berekening zoals uit de formule blijkt. Op het Dashboard van de Rijksoverheid wordt gemeld dat de juiste cijfers ooit wel beschikbaar komen, als het zover is zal @NLVaccinatie daar uiteraard gebruik van maken.
 
 ## Wat een origineel idee is dat @NLVaccinatie
 Nee, helaas niet. Onder het mom *beter goed gejat dan slecht bedacht* moeten de credits gaan naar [@USVaccineCount](https://twitter.com/USVaccineCount).
