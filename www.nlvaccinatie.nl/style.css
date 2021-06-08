@@ -1,0 +1,31 @@
+body {
+  
+}
+h1 {
+  background: url('NLVaccinatie.png') no-repeat;
+  background-position: 0 0;
+  font-size: 4.0rem;
+  background-size: 60px 60px;
+  padding: 0 0 20px 70px;
+
+}
+
+h1, h2, h3, h4 {
+  color: #21468B;  
+}
+
+
+h2 { 
+  font-size: 2.0rem; 
+  letter-spacing: 0rem;
+  margin-bottom: 0.0rem;}
+
+article {
+}
+
+.hasLogo {
+  background: url('NLVaccinatie.png') no-repeat;
+  background-position: 3px center;
+  background-size: 20px 20px;
+  padding: 0 0 0 25px;
+}

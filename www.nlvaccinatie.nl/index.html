@@ -1,0 +1,71 @@
+<!DOCTYPE html> <!-- proper HTML5 doctype -->
+<html lang="nl">
+
+<head>
+  	<meta charset="utf-8">
+  	<title>Nederlandse Vaccinatie Tracker</title>
+  	<meta name="author" content="Mark Lindeman">
+  	<meta name="description" content="De Nederlandse Vaccinatie Tracker is de Twitter account @NLVaccinatie die probeert bij te houden hoeveel Nederlanders gevaccineerd zijn tegen COVID-19.">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="NLVaccinatie.png" />
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+	<link href="./Skeleton-2.0.4/css/normalize.css" rel="stylesheet">
+  	<link href="./Skeleton-2.0.4/css/skeleton.css" rel="stylesheet">
+  	<link href="style.css?v2" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+      <div class="row">
+          <div class="eleven columns" style="margin-top: 20px">
+              	<h1>Nederlandse Vaccinatie Tracker</h1>
+                <article>
+                	<h2>Wat is de Nederlandse Vaccinatie Tracker?</h2>
+                    <p>De Nederlandse Vaccinatie Tracker is een Twitter account (<a href="https://twitter.com/NLVaccinatie"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16" style="margin-top: 5px">
+              <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+            </svg> @NLVaccinatie</a>)
+                        die probeert bij te houden hoeveel Nederlanders gevaccineerd zijn tegen COVID-19.</p>
+                </article>
+                <article>
+                	<h2>Hoe berekent <span class="hasLogo">NLVaccinatie</span> het percentage gevaccineerde inwoners?</h2>
+                    <p>Het <a href="https://coronadashboard.rijksoverheid.nl/">Coronadashboard van de Rijskoverheid</a> geeft geen cijfers over het percentage inwoners
+                        dat is ingeënt, maar alleen over het aantal prikken. Er wordt verschil gemaakt tussen het aantal "Berekende" en "Gezette" prikken.
+                        Voor meer informatie hierover, zie <em><a href="https://coronadashboard.rijksoverheid.nl/verantwoording#vaccinatie">Uitleg bij de cijfers</a></em>.</p>
+                    <p>Om van het aantal berekende prikken te komen tot een percentage ingeënte inwoners ouder dan 18 gebruiken we de volgende formule (overbodige haakjes voor de leesbaarheid):</p>
+                    <code>((Prik<sub>1e</sub> / Prik<sub>tot</sub>) * Prik<sub>berekend</sub>) ÷ (Inw<sub>tot</sub> - Inw<sub>o18</sub>)</code>
+                    Waarbij de gegevens afkomstig zijn van:</p>
+                    <ul>
+                        <li><code>Prik<sub>1e</sub> &amp; Prik<sub>tot</sub></code>: <a href="https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma">RIVM</a></li>
+                        <li><code>Prik<sub>berekend</sub></code>: <a href="https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties">Corona Dashboard Rijksoverheid; Berekende Prikken</a></li>
+                        <li><code>Inw<sub>tot</sub> &amp; Inw<sub>o18</sub></code>: <a href="https://www.cbs.nl/nl-nl/visualisaties/dashboard-bevolking/bevolkingsteller/">CBS: Bevolkingsteller</a></li>
+                    </ul>
+                </article>
+                <article>
+                	<h2>Klopt de berekening van <span class="hasLogo">NLVaccinatie</span> eigenlijk wel?</h2>
+                    <p>Nee</p>
+                </article>
+                <article>
+                	<h2><span class="hasLogo">NLVaccinatie</span> is dus eigenlijk fakenews of zelfs een wappie?</h2>
+                    <p>Nee dat nou ook weer niet. Probleem is dat de data die in Nederland verzameld wordt niet geschikt is om exact te berekenen wat het percentage ingeënte Nederlandse inwoners is.
+                    @NLVaccinatie doet een vereenvoudigde statistische berekening zoals uit de formule blijkt. Op het Dashboard van de Rijksoverheid wordt gemeld dat de juiste cijfers ooit wel beschikbaar komen, als het zover is zal @NLVaccinatie daar uiteraard gebruik van maken.
+                    </p>
+                </article>
+                <article>
+                	<h2>Wat een origineel idee is dat <span class="hasLogo">NLVaccinatie</span>!</h2>
+                    <p>Nee, helaas niet. Onder het mom <em>beter goed gejat dan slecht bedacht</em> moeten de credits gaan naar <a href="https://twitter.com/USVaccineCount"><i class="bi bi-twitter"></i> @USVaccineCount</a>.</p>
+                </article>
+                <article>
+                	<h2>Waarom staat er bij eerdere tweets "Waardes t/m &hellip;"?</h2>
+                    <p>Dit project is begonnen op 10 april. Vanaf die dag wordt er elke dag (rond 16:00) een nieuwe update op de tijdlijn geplaatst. Op 10 april zijn alle historische gegevens ook geplaatst, maar dan wel met de periode waar het betrekking op heeft.</p>
+                </article>
+                <article>
+                    <h2>Kan ik zelf ook een Twitterbot maken die zoiets doet?</h2>
+                    <p>Ja hoor dat kan! <a href="https://github.com/mightymax/NLVaccinatie">De broncode van de Bot is beschikbaar als Open Source via GitHub</a>. Daar staan ook instructies.</p>
+                </article>
+          </div>
+      </div>
+  </div>
+</body>
+  
+</html>
