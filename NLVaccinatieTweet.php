@@ -114,7 +114,7 @@ class HTMLScraper extends DOMDocument {
     public function assert(DOMNode $node, $value) 
     {
         if ($node->nodeValue != $value) 
-            throw new Exception("Expected value of DOMNode is 'Totaal' got '{$node->nodeValue}'");
+            throw new Exception("Expected value of DOMNode is '{$value}' got '{$node->nodeValue}'");
         return true;
     }
     
@@ -171,7 +171,7 @@ try {
     //Fetch RIVM Data so we can guess % of first vaccinated people:
     unset($doc);
     $doc = new HTMLScraper($urlRIVM);
-    $cells = $doc->query('//table/tbody/tr[last()]/td');
+    $cells = $doc->query('//table/tbody/tr[last()]/td/text()');
     $doc->assert($cells->item(0), 'Totaal');
     
 
